@@ -3,7 +3,7 @@
 - [To make a Svelte playground with a template, use this repo and follow the instructions in the readme](https://github.com/sveltejs/template)
 1. Clone down the Ref365_fe [repo](https://github.com/Ref365/Ref365_fe) with `git clone git@github.com:Ref365/Ref365_fe.git`
 1. From the root directory of the project, run `npm install` and then run `npm install --save svelte-routing`
-1. Make sure the `scripts` property of your package.json file looks like this: 
+1. Make sure the `scripts` property of your package.json file looks like this (this step shouldn't be needed after I make my first PR): 
 ```javascript
 "scripts": {
     "build": "rollup -c",
