@@ -1,33 +1,30 @@
 <script>
+// imports
   import ApolloClient from "apollo-boost";
   import { setClient } from "svelte-apollo";
-  let title;
-  let mileage;
-  let date;
-  let time;
-  let notes;
-  let payment;
-  
+// component variables and props
+  let newEventDetails = {}
+// methods
   const submitNewEvent = (e) => {
     e.preventDefault();
-    console.log(title, mileage, date, time, notes, payment)
+    console.log(newEventDetails)
   }
 </script>
 
 
 <form on:submit={submitNewEvent}>
   <label for='event-title'>Event Title</label>
-  <input bind:value={title} class='event-title' type='text'>
-  <label for='date'>Date & Time</label>
-  <input bind:value={date} class='date' type='date'>
-  <input bind:value={time} type='time' >
+    <input bind:value={newEventDetails.title} class='event-title' type='text'>
   <label for='mileage'>Mileage</label>
-  <input bind:value={mileage} type='number'>
+    <input bind:value={newEventDetails.mileage} type='number'>
+  <label for='date'>Date & Time</label>
+    <input bind:value={newEventDetails.date} class='date' type='date'>
+    <input bind:value={newEventDetails.time} type='time' >
   <label for='payment'>Payment</label>
-  <input bind:value={payment} class='payment' type='number' placeholder='$'>
+    <input bind:value={newEventDetails.payment} class='payment' type='number' placeholder='$'>
   <label for='notes'>Notes</label>
-  <input bind:value={notes} type='text'>
-  <button>Create New Event</button>
+    <input bind:value={newEventDetails.notes} type='text'>
+  <button>Create New Event</button> 
 </form>
 
 
