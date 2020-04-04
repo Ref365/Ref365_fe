@@ -12,12 +12,22 @@
   
 </script>
 
-<style>
-</style>
 
 <nav>
-  <Link to='about'>About</Link>
-   {#await $userOp}
+
+  <!-- <Link to='about'>About</Link> -->
+  <h1>REF365</h1>
+
+</nav>
+ 
+<style>
+  nav {
+    border: 2px solid black;
+  }
+</style>
+ 
+ 
+   <!-- {#await $userOp}
     <p>.. loading</p>
   {:then data}
 
@@ -27,5 +37,4 @@
 
   {:catch e}
     {e}
-  {/await}
-</nav>
+  {/await} -->
