@@ -39,9 +39,8 @@
 <Router url={url}>
 	<main>
 		<NavBar />
-		<NewEventForm />
-		<Route path='about' component={About} /> 
-
+		<Route path='add-event' component={NewEventForm} />
+		<!-- <Route path='' component={App} /> -->
 	</main>
 </Router>
 

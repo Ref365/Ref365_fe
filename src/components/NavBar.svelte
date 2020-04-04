@@ -14,10 +14,8 @@
 
 
 <nav>
-
-  <!-- <Link to='about'>About</Link> -->
-  <h1>REF365</h1>
-
+  <Link to='add-event'>Add New Event</Link>
+  <Link to=''><h1>REF365</h1></Link>
 </nav>
  
 <style>
