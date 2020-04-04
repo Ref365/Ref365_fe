@@ -1,7 +1,8 @@
 <script>
 	import NavBar from './components/NavBar.svelte'
 	import About from './components/About.svelte'
-	export let name;
+	import NewEventForm from './components/NewEventForm.svelte'
+	// export let name;
 	import { Router, Link, Route } from "svelte-routing";
 	export let url = '';
 	import ApolloClient from "apollo-boost";
@@ -38,10 +39,9 @@
 <Router url={url}>
 	<main>
 		<NavBar />
-		<h1>Hello {name}!</h1>
-		<h2> new change </h2>
-		<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+		<NewEventForm />
 		<Route path='about' component={About} /> 
+
 	</main>
 </Router>
 
@@ -65,4 +65,5 @@
 			max-width: none;
 		}
 	}
+
 </style>
