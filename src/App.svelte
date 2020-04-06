@@ -45,6 +45,10 @@
 </Router>
 
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+  * {
+    font-family: 'Do Hyeon', sans-serif;
+  }
 	main {
 		text-align: center;
 		padding: 1em;

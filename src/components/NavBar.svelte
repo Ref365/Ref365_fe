@@ -14,14 +14,23 @@
 
 
 <nav>
+  <Link class='home-btn' to=''><h1>REF365</h1></Link>
   <Link to='add-event'>Add New Event</Link>
-  <Link to=''><h1>REF365</h1></Link>
 </nav>
  
 <style>
   nav {
     border: 2px solid black;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
   }
+
+ 
+
 </style>
  
  
