@@ -1,6 +1,7 @@
 <script>
 // imports
   import ApolloClient from "apollo-boost";
+  import { gql } from "apollo-boost";
   import { setClient } from "svelte-apollo";
 // component variables and props
   let newEventDetails = {}
@@ -9,6 +10,31 @@
     e.preventDefault();
     console.log(newEventDetails)
   }
+
+  const ADD_EVENT = gql`
+    mutation {
+      createEvent(input: {
+        userId: 7,
+        title: "Soccer",
+        body: "Main ref",
+        date: "2018-07-21 00:00:00 UTC",
+        time: "2020-04-04 14:00:00 UTC",
+        mileage: 13.44,
+        income: 122.33
+      }) {
+        event {
+          id
+          title
+          body
+          date
+          time
+          mileage
+          income
+        }
+        errors
+      }
+}
+  `;
 </script>
 
 
