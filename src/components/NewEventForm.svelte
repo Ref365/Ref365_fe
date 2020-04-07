@@ -2,47 +2,44 @@
 // imports
   import ApolloClient from "apollo-boost";
   import { gql } from "apollo-boost";
-  import { setClient, getClient, mutate } from "svelte-apollo";
+  import { setClient, getClient, mutate, query } from "svelte-apollo";
 // component variables and props
-  let newEventDetails = {}
-  let userId = 9;
+  let title;
+  let notes;
+  let date;
+  let time;
+  let mileage;
+  let payment;
+  let userId = 2;
 // methods
-  const submitNewEvent = (e) => {
-    e.preventDefault();
-    console.log(newEventDetails)
-  }
-
   const client = getClient();
-  const GETEVENTS = gql`
-    {
-      user(id: ${userId}) {
-        events {
-          date
-        }
-      }
-    }
-  `;
-  // const eventQuery = query(client, {query: GETEVENTS});
 
   const ADDEVENT = gql`
-    mutation {
+    mutation($title: String!, 
+             $userId: ID!,
+             $notes: String!,
+             $date: String!,
+             $time: String!,
+             $payment: Float!
+             $mileage: Float!,
+              ){
       createEvent(input: {
-        userId: ${userId},
-        title: ${newEventDetails.title},
-        body: ${newEventDetails.notes},
-        date: ${newEventDetails.date},
-        time: ${newEventDetails.time},
-        mileage: ${newEventDetails.mileage},
-        income: ${newEventDetails.payment}
+        userId: $userId,
+        title: $title,
+        notes: $notes,
+        date: $date,
+        time: $time,
+        mileage: $mileage,
+        income: $payment
       }) {
         event {
-          id
-          title
-          body
-          date
-          time
-          mileage
-          income
+           id
+           title
+           notes
+           date
+           time
+           mileage
+           income
         }
         errors
       }
@@ -52,13 +49,17 @@
   const addEvent = () => {
    const eventAdd = mutate(client, {
       mutation: ADDEVENT,
-      // variables: {
-      //   todoEdit
-      // }
+      variables: {
+        userId,
+        title, 
+        notes, 
+        date, 
+        time,
+        mileage,
+        payment
+      }
     })
       .then(data => {
-        // todoEdit = "";
-        // todoOp.refetch();
         console.log(data)
       })
       .catch(e => {
@@ -67,19 +68,18 @@
   }
 </script>
 
-
 <form on:submit|preventDefault={addEvent}>
   <label for='event-title'>Event Title</label>
-    <input bind:value={newEventDetails.title} class='event-title' type='text'>
+    <input bind:value={title} class='event-title' type='text'>
   <label for='mileage'>Mileage</label>
-    <input bind:value={newEventDetails.mileage} type='number'>
+    <input bind:value={mileage} type='number'>
   <label for='date'>Date & Time</label>
-    <input bind:value={newEventDetails.date} class='date' type='date'>
-    <input bind:value={newEventDetails.time} type='time' >
+    <input bind:value={date} class='date' type='date'>
+    <input bind:value={time} type='time' >
   <label for='payment'>Payment</label>
-    <input bind:value={newEventDetails.payment} placeholder='$' class='payment' type='number' >
+    <input bind:value={payment} placeholder='$' class='payment' type='number' >
   <label for='notes'>Notes</label>
-    <input class='notes-input' bind:value={newEventDetails.notes} type='text'>
+    <input class='notes-input' bind:value={notes} type='text'>
   <button>Create New Event</button> 
 </form>
 
