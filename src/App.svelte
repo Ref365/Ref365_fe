@@ -2,6 +2,7 @@
 	import NavBar from './components/NavBar.svelte'
 	import About from './components/About.svelte'
 	import NewEventForm from './components/NewEventForm.svelte'
+	import UpcomingEvents from './components/UpcomingEvents.svelte'
 	// export let name;
 	import { Router, Link, Route } from "svelte-routing";
 	export let url = '';
@@ -22,17 +23,17 @@
 
 // standard fetch call 
 
-	// fetch('http://localhost:3000/graphql', {
-	// 	method: 'POST',
-	// 	// mode: 'no-cors',
-	// 	headers: { 'Content-Type': 'application/json' },
-	// 	body: JSON.stringify({ query: '{ users { email } }' }),
-	// })
-	// 	.then(res => {
-	// 		console.log('response:', res)
-	// 		return res.json()
-	// 		})
-	// 	.then(data => console.log('data:', data));
+	fetch('http://localhost:3000/graphql', {
+		method: 'POST',
+		// mode: 'no-cors',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify({ query: '{ users { email } }' }),
+	})
+		.then(res => {
+			console.log('response:', res)
+			return res.json()
+			})
+		.then(data => console.log('data:', data));
 
 </script>
 
@@ -40,7 +41,8 @@
 	<main>
 		<NavBar />
 		<Route path='add-event' component={NewEventForm} />
-		<!-- <Route path='' component={App} /> -->
+		<!-- <Route path='add-event' component={UpcomingEvents} /> -->
+		<UpcomingEvents />
 	</main>
 </Router>
 
