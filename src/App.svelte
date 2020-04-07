@@ -23,17 +23,17 @@
 
 // standard fetch call 
 
-	fetch('http://localhost:3000/graphql', {
-		method: 'POST',
-		// mode: 'no-cors',
-		headers: { 'Content-Type': 'application/json' },
-		body: JSON.stringify({ query: '{ users { email } }' }),
-	})
-		.then(res => {
-			console.log('response:', res)
-			return res.json()
-			})
-		.then(data => console.log('data:', data));
+	// fetch('http://localhost:3000/graphql', {
+	// 	method: 'POST',
+	// 	// mode: 'no-cors',
+	// 	headers: { 'Content-Type': 'application/json' },
+	// 	body: JSON.stringify({ query: '{ users { email } }' }),
+	// })
+	// 	.then(res => {
+	// 		console.log('response:', res)
+	// 		return res.json()
+	// 		})
+	// 	.then(data => console.log('data:', data));
 
 </script>
 
