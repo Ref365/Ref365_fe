@@ -12,12 +12,29 @@
   
 </script>
 
-<style>
-</style>
 
 <nav>
-  <Link to='about'>About</Link>
-   {#await $userOp}
+  <Link class='home-btn' to=''><h1>REF365</h1></Link>
+  <Link to='add-event'>Add New Event</Link>
+</nav>
+ 
+<style>
+  nav {
+    border: 2px solid black;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+  }
+
+ 
+
+</style>
+ 
+ 
+   <!-- {#await $userOp}
     <p>.. loading</p>
   {:then data}
 
@@ -27,5 +44,4 @@
 
   {:catch e}
     {e}
-  {/await}
-</nav>
+  {/await} -->
