@@ -9,7 +9,7 @@
 
   const client = getClient();
   const userOp = query(client, {query: GETUSERS});
-  
+
 </script>
 
 
@@ -17,7 +17,7 @@
   <Link class='home-btn' to=''><h1>REF365</h1></Link>
   <Link to='add-event'>Add New Event</Link>
 </nav>
- 
+
 <style>
   nav {
     border: 2px solid black;
@@ -29,11 +29,9 @@
     padding: 1rem;
   }
 
- 
-
 </style>
- 
- 
+
+
    <!-- {#await $userOp}
     <p>.. loading</p>
   {:then data}
