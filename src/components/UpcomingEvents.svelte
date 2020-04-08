@@ -4,6 +4,9 @@
   import { setClient, getClient, mutate, query } from "svelte-apollo";
   let userId = 2;
 
+  export let reFetch;
+  console.log(reFetch);
+
   const client = getClient();
   const GETEVENTS = gql`
       {
@@ -18,6 +21,13 @@
     `;
  const eventQuery = query(client, {query: GETEVENTS});
 
+ let sortedEvents = [];
+
+ const sortEvents = (events) => {
+   sortedEvents = events.sort((a,b) => new Date(a.date) - new Date(b.date))
+   console.log(sortedEvents)
+ }
+
 </script>
 
 <section class='card-container'>
@@ -26,7 +36,12 @@
     <p>.. loading</p>
   {:then data}
 
-    {#each data.data.user.events as event, i}
+  {
+    sortEvents(data.data.user.events)
+  }
+
+
+    {#each sortedEvents as event, i}
     <section class='event-card'>
       <p>{event.title}</p>
       <p>{event.date}</p>
