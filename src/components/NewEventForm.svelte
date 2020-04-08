@@ -3,6 +3,7 @@
   import ApolloClient from "apollo-boost";
   import { gql } from "apollo-boost";
   import { setClient, getClient, mutate, query } from "svelte-apollo";
+  import UpcomingEvents from './UpcomingEvents.svelte'
 // component variables and props
   let title;
   let notes;
@@ -11,11 +12,12 @@
   let mileage;
   let payment;
   let userId = 2;
+  let reFetch = false;
 // methods
   const client = getClient();
 
   const ADDEVENT = gql`
-    mutation($title: String!, 
+    mutation($title: String!,
              $userId: ID!,
              $notes: String!,
              $date: String!,
@@ -51,9 +53,9 @@
       mutation: ADDEVENT,
       variables: {
         userId,
-        title, 
-        notes, 
-        date, 
+        title,
+        notes,
+        date,
         time,
         mileage,
         payment
@@ -61,6 +63,7 @@
     })
       .then(data => {
         console.log(data)
+        reFetch = !reFetch;
       })
       .catch(e => {
         console.error("error: ", e);
@@ -68,20 +71,23 @@
   }
 </script>
 
-<form on:submit|preventDefault={addEvent}>
-  <label for='event-title'>Event Title</label>
-    <input bind:value={title} class='event-title' type='text'>
-  <label for='mileage'>Mileage</label>
-    <input bind:value={mileage} type='number'>
-  <label for='date'>Date & Time</label>
-    <input bind:value={date} class='date' type='date'>
-    <input bind:value={time} type='time' >
-  <label for='payment'>Payment</label>
-    <input bind:value={payment} placeholder='$' class='payment' type='number' >
-  <label for='notes'>Notes</label>
-    <input class='notes-input' bind:value={notes} type='text'>
-  <button>Create New Event</button> 
-</form>
+<section>
+  <form on:submit|preventDefault={addEvent}>
+    <label for='event-title'>Event Title</label>
+      <input bind:value={title} class='event-title' type='text'>
+    <label for='mileage'>Mileage</label>
+      <input bind:value={mileage} type='number'>
+    <label for='date'>Date & Time</label>
+      <input bind:value={date} class='date' type='date'>
+      <input bind:value={time} type='time' >
+    <label for='payment'>Payment</label>
+      <input bind:value={payment} placeholder='$' class='payment' type='number' >
+    <label for='notes'>Notes</label>
+      <input class='notes-input' bind:value={notes} type='text'>
+    <button>Create New Event</button>
+  </form>
+  <UpcomingEvents reFetch={reFetch}/>
+</section>
 
 
 <style>
@@ -102,7 +108,7 @@
   .notes-input {
     height: 6rem;
   }
-  
+
   label {
     width: 60%;
     font-size: 1.5rem;
