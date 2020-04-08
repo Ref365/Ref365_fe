@@ -8,7 +8,7 @@
 	export let url = '';
 	import ApolloClient from "apollo-boost";
 	import { setClient } from "svelte-apollo";
-	
+
 	// apollo set up
 
 	const client = new ApolloClient({
@@ -21,7 +21,7 @@
 
   setClient(client);
 
-// standard fetch call 
+// standard fetch call
 
 	// fetch('http://localhost:3000/graphql', {
 	// 	method: 'POST',
@@ -42,7 +42,6 @@
 		<NavBar />
 		<Route path='add-event' component={NewEventForm} />
 		<!-- <Route path='add-event' component={UpcomingEvents} /> -->
-		<UpcomingEvents />
 	</main>
 </Router>
 
