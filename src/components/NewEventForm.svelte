@@ -15,6 +15,18 @@
   let reFetch = false;
 // methods
   const client = getClient();
+   const GETEVENTS = gql`
+      {
+        user(id: ${userId}) {
+          events {
+            date
+            title
+            time
+          }
+        }
+      }
+    `;
+ const eventQuery = query(client, {query: GETEVENTS});
 
   const ADDEVENT = gql`
     mutation($title: String!,
@@ -63,7 +75,7 @@
     })
       .then(data => {
         console.log(data)
-        // reFetch = !reFetch;
+        eventQuery.refetch();
       })
       .catch(e => {
         console.error("error: ", e);
@@ -88,7 +100,7 @@
     <button>Create New Event</button>
   </form>
   <div>
-    <UpcomingEvents reFetch={reFetch}/>
+    <UpcomingEvents eventQuery={eventQuery}/>
   </div>
 </section>
 
