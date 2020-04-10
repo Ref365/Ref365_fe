@@ -1,20 +1,34 @@
 {
-  "name": "svelte-app",
+  "name": "ref365",
+  "jest": {
+    "transform": {
+      "^.+\\.svelte$": "svelte-jester"
+    },
+    "moduleFileExtensions": [
+      "js",
+      "svelte"
+    ]
+  },
   "version": "1.0.0",
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "start": "sirv public --single",
-    "start:dev": "sirv public --dev --single"
+    "start:dev": "sirv public --dev --single",
+    "test": "jest src",
+    "test:watch": "npm run test -- --watch"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^11.0.0",
     "@rollup/plugin-node-resolve": "^7.0.0",
+    "@testing-library/svelte": "^3.0.0",
+    "jest": "^25.3.0",
     "rollup": "^1.20.0",
     "rollup-plugin-livereload": "^1.0.0",
     "rollup-plugin-svelte": "^5.0.3",
     "rollup-plugin-terser": "^5.1.2",
-    "svelte": "^3.0.0"
+    "svelte": "^3.0.0",
+    "svelte-jester": "^1.0.5"
   },
   "dependencies": {
     "apollo-boost": "^0.4.7",
@@ -22,5 +36,15 @@
     "sirv-cli": "^0.4.4",
     "svelte-apollo": "^0.3.0",
     "svelte-routing": "^1.4.2"
-  }
+  },
+  "setupFilesAfterEnv": [
+    "@testing-library/jest-dom/extend-expect"
+  ],
+  "transform": {
+    "^.+\\.svelte$": "svelte-jester"
+  },
+  "moduleFileExtensions": [
+    "js",
+    "svelte"
+  ]
 }
