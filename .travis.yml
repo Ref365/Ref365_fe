@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+- node
+notifications: false
+deploy:
+  provider: heroku
+  api_key:
+    secure: hvKh2+WlNivRp2dHLgO4iW+mHfxBTekHlkLaXKsbOCpDG1clj7GhJPqaeBzPK617P5+ZnRPX0hCsYAQ6/b8H+JtGSWCrSj6XYhM/ZANjNINLozNNtyDVET3DR1mph79/ZVufDaZ86nGQ+T19pVZpsrgOYimrK9m+sSB8J83AnhJy/jY+xWD3fPnRGBuHZWTn6awxMWKa8Z2ZpKaTLbzR81A3hHnpXpacg1mM4hdrWgabQNczPY2PWUHJ2T4Xxeq++IIA6NqU7+gGaOLwSPBK2scq2jWlBc4laDEsBwIjdjuSgOSAylmpkZWFGemcRc03D/8WJjeAVt8zfjjltwN1cmB/5G6PSc/HctmBcUlL4NmGGK9RJnFNcnEfSEmBM6vJSVgTaTMvllCWBsYq2vbbxv+/oGH6k6ITTPvdQOMyevu4WNSI5JvES5LXp3D6aKpcM5wRh3lOcJcgdywKZqYSi4VnV270C+oc55/9wfOhKgsgLX3ez27M/Ngdcew13L4GiQAGd+gbIsBs5+17gH+uP/7fd7VzeswcXLOFqEvKM37izSZbyuBiNh9Hlx6n4OCDdGsF2yobjqVZyfyJ/qc2dmEJ+52ES7TY6R0Sh+ZGjfs5twHBI9q1nrsuPVhn01y3bcDcEaB8/4M3G4FfXUa/u1r3la7xtMH2+rQpMdr9mek=
+  app: ref365
+  skip_cleanup: true
