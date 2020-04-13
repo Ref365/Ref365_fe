@@ -2,34 +2,11 @@
   import ApolloClient from "apollo-boost";
   import { gql } from "apollo-boost";
   import { setClient, getClient, mutate, query } from "svelte-apollo";
-  let userId = 5;
+  let userId = 1;
 
   export let eventQuery;
-  // console.log(reFetch);
-
-  export let reFetch;
-  console.log(reFetch);
 
   const client = getClient();
-//   const GETEVENTS = gql`
-//       {
-//         user(id: ${userId}) {
-//           events {
-//             date
-//             title
-//             time
-//           }
-//         }
-//       }
-//     `;
-//  const eventQuery = query(client, {query: GETEVENTS});
-
- let sortedEvents = [];
-
- const sortEvents = (events) => {
-   sortedEvents = events.sort((a,b) => new Date(a.date) - new Date(b.date))
-   console.log(sortedEvents)
- }
 
  let sortedEvents = [];
 
