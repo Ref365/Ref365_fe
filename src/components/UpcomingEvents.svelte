@@ -31,13 +31,6 @@
    console.log(sortedEvents)
  }
 
- let sortedEvents = [];
-
- const sortEvents = (events) => {
-   sortedEvents = events.sort((a,b) => new Date(a.date) - new Date(b.date))
-   console.log(sortedEvents)
- }
-
 </script>
 
 <section class='card-container'>
