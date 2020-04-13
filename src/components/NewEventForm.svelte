@@ -11,10 +11,21 @@
   let time;
   let mileage;
   let payment;
-  let userId = 2;
-  let reFetch = false;
+  let userId = 5;
 // methods
   const client = getClient();
+   const GETEVENTS = gql`
+      {
+        user(id: ${userId}) {
+          events {
+            date
+            title
+            time
+          }
+        }
+      }
+    `;
+ const eventQuery = query(client, {query: GETEVENTS});
 
   const ADDEVENT = gql`
     mutation($title: String!,
@@ -63,7 +74,7 @@
     })
       .then(data => {
         console.log(data)
-        reFetch = !reFetch;
+        eventQuery.refetch();
       })
       .catch(e => {
         console.error("error: ", e);
@@ -73,6 +84,7 @@
 
 <section>
   <form on:submit|preventDefault={addEvent}>
+    <h2>Add New Event</h2>
     <label for='event-title'>Event Title</label>
       <input bind:value={title} class='event-title' type='text'>
     <label for='mileage'>Mileage</label>
@@ -86,23 +98,37 @@
       <input class='notes-input' bind:value={notes} type='text'>
     <button>Create New Event</button>
   </form>
-  <UpcomingEvents reFetch={reFetch}/>
+  <div>
+    <UpcomingEvents eventQuery={eventQuery}/>
+  </div>
 </section>
 
 
 <style>
+  section {
+    display: flex;
+
+  }
+  h2 {
+    font-size: 2rem;
+    color: white;
+  }
   form {
-    padding: 1rem;
+    border-right: 3px solid black;
     width: 50%;
     display: flex;
-    flex-direction: column;
     justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
   }
 
   input {
     border: .1rem solid black;
     width: 60%;
     height: 3rem;
+  }
+  div {
+    width: 50%;
   }
 
   .notes-input {
@@ -112,12 +138,17 @@
   label {
     width: 60%;
     font-size: 1.5rem;
+    color: white;
+
   }
 
   button {
     width: 60%;
     cursor: pointer;
     border-radius: 5%;
-    background-color: lightcoral
+    background-color: yellow;
+    margin-top: 2rem;
+    padding: 1rem;
+    font-size: 1.65rem;
   }
 </style>

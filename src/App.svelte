@@ -48,7 +48,8 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
   * {
-    font-family: 'Do Hyeon', sans-serif;
+		font-family: 'Do Hyeon', sans-serif;
+		background-color: black;
   }
 	main {
 		text-align: center;
