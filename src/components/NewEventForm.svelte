@@ -12,7 +12,6 @@
   let mileage;
   let payment;
   let userId = 5;
-  let reFetch = false;
 // methods
   const client = getClient();
    const GETEVENTS = gql`
