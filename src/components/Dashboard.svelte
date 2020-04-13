@@ -32,7 +32,15 @@
 
 <section class='dashboard-main'>
   <h1>Dashboard</h1>
+  {#await $incomeQuery}
+  <p> ...loading</p>
+  {:then data}
+  {console.log('income data array:', data.data.user.events)}
+  {:catch e}
+  {/await}
 </section>
+
+
 
 <style>
 
