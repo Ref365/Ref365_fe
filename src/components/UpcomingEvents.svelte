@@ -5,24 +5,8 @@
   let userId = 5;
 
   export let eventQuery;
-  // console.log(reFetch);
-
-  export let reFetch;
-  console.log(reFetch);
 
   const client = getClient();
-//   const GETEVENTS = gql`
-//       {
-//         user(id: ${userId}) {
-//           events {
-//             date
-//             title
-//             time
-//           }
-//         }
-//       }
-//     `;
-//  const eventQuery = query(client, {query: GETEVENTS});
 
  let sortedEvents = [];
 
