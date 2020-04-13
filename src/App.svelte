@@ -13,7 +13,7 @@
 	// apollo set up
 
 	const client = new ApolloClient({
-		uri: "http://localhost:3000/graphql",
+		uri: "https://ref365-be.herokuapp.com/graphql",
     onError: ({ networkError, graphQLErrors }) => {
       console.log("graphQLErrors", graphQLErrors);
       console.log("networkError", networkError);

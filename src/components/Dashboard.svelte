@@ -4,7 +4,7 @@
   import { setClient, getClient, mutate, query } from "svelte-apollo";
 
 
-  let userId = 5;
+  let userId = 1;
   const client = getClient();
   const GETALLMILEAGE = gql`
       {
