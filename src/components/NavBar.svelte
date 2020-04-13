@@ -16,6 +16,8 @@
 <nav>
   <a href='/' use:link class='home-btn'>REF365</a>
   <a href='add-event' use:link class='new-event-btn' >Add New Event</a>
+  <a href='dashboard' use:link class='dashboard-btn' >Dashboard</a>
+
 </nav>
 
 <style>
@@ -37,7 +39,8 @@
     border-radius: 5%;
   }
 
-  .new-event-btn {
+  .new-event-btn,
+  .dashboard-btn {
     padding: 12px;
     border: 2px solid grey;
   }

@@ -31,6 +31,7 @@
 </script>
 
 <section class='dashboard-main'>
+  <h1>Dashboard</h1>
 </section>
 
 <style>

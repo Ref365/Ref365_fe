@@ -3,6 +3,7 @@
 	import About from './components/About.svelte'
 	import NewEventForm from './components/NewEventForm.svelte'
 	import UpcomingEvents from './components/UpcomingEvents.svelte'
+	import Dashboard from './components/Dashboard.svelte'
 	// export let name;
 	import { Router, Link, Route } from "svelte-routing";
 	export let url = '';
@@ -41,6 +42,8 @@
 	<main>
 		<NavBar />
 		<Route path='add-event' component={NewEventForm} />
+		<Route path='dashboard' component={Dashboard} />
+
 		<!-- <Route path='add-event' component={UpcomingEvents} /> -->
 	</main>
 </Router>
