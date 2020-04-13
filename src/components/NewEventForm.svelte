@@ -18,9 +18,8 @@
       {
         user(id: ${userId}) {
           events {
-            date
             title
-            time
+            dateTime
           }
         }
       }
