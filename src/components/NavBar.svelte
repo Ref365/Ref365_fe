@@ -29,7 +29,7 @@
     align-items: center;
     padding: 1rem;
   }
-
+  
   a {
     color: white;
     text-decoration: none;
@@ -50,20 +50,5 @@
   a:hover {
     border-bottom: 2px solid white;
     }
-
- 
-
+  
 </style>
-
-
-   <!-- {#await $userOp}
-    <p>.. loading</p>
-  {:then data}
-
-    {#each data.data['users'] as user, i}
-      <p>{user.email}</p>
-    {/each}
-
-  {:catch e}
-    {e}
-  {/await} -->

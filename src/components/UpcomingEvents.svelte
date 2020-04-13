@@ -7,6 +7,9 @@
   export let eventQuery;
   // console.log(reFetch);
 
+  export let reFetch;
+  console.log(reFetch);
+
   const client = getClient();
 //   const GETEVENTS = gql`
 //       {
@@ -20,6 +23,13 @@
 //       }
 //     `;
 //  const eventQuery = query(client, {query: GETEVENTS});
+
+ let sortedEvents = [];
+
+ const sortEvents = (events) => {
+   sortedEvents = events.sort((a,b) => new Date(a.date) - new Date(b.date))
+   console.log(sortedEvents)
+ }
 
  let sortedEvents = [];
 
@@ -75,6 +85,5 @@
     color: white;
     font-size: 1.2rem;
   }
-
 
 </style>
