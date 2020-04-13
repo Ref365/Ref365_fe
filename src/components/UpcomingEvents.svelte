@@ -11,8 +11,7 @@
  let sortedEvents = [];
 
  const sortEvents = (events) => {
-   sortedEvents = events.sort((a,b) => new Date(a.date) - new Date(b.date))
-   console.log(sortedEvents)
+   sortedEvents = events.sort((a,b) => new Date(a.dateTime) - new Date(b.dateTime))
  }
 
 </script>
@@ -31,7 +30,7 @@
     {#each sortedEvents as event, i}
     <section class='event-card'>
       <p class='event-title'>{event.title}</p>
-      <p>{event.date}</p>
+      <p>{event.dateTime}</p>
     </section>
     {/each}
 
