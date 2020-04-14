@@ -9,9 +9,15 @@
   const client = getClient();
 
  let sortedEvents = [];
+ let firstFive = [];
 
  const sortEvents = (events) => {
-   sortedEvents = events.sort((a,b) => new Date(b.dateTime) - new Date(a.dateTime))
+   sortedEvents = events.sort((a,b) => new Date(b.dateTime) - new Date(a.dateTime));
+   if (sortedEvents.length > 6) {
+     firstFive = sortedEvents.slice(0, 5)
+   } else {
+     firstFive = sortedEvents;
+   }
  }
 
 </script>
@@ -24,7 +30,7 @@
 
   <p class='hidden'>{sortEvents(data.data.user.events)}</p>
 
-    {#each sortedEvents as event, i}
+    {#each firstFive as event, i}
     <section class='event-card'>
       <p class='event-title'>{event.title}</p>
       <p>{event.dateTime}</p>
