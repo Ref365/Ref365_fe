@@ -75,6 +75,12 @@
     })
       .then(data => {
         console.log(data)
+        title = '';
+        notes = ''
+        date = null;
+        time = null;
+        mileage = null;
+        payment = null;
         eventQuery.refetch();
       })
       .catch(e => {
@@ -84,13 +90,13 @@
 
   const validateForm = () => {
     if (title && notes && date && time && mileage && payment) {
-      addEvent()
       errors.formValid = true;
+      addEvent()
     } else {
       errors.formValid = false;
     }
-    
   }
+
 </script>
 
 <section>
