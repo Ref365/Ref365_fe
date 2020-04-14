@@ -140,7 +140,7 @@
 <style>
   section {
     display: flex;
-
+    height: 100vh;
   }
   h2 {
     font-size: 2rem;
