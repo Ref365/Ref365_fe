@@ -74,17 +74,43 @@
   {#await $incomeQuery}
   <p>...loading</p>
   {:then data}
-  <div class='total-income data-card'>
-    <h2>{getIncomeTotal(data.data.user.events)}</h2>
-  </div>
-  <div class='income-to-date data-card'>
-    <h2>{getDataToDate(data.data.user.events)}</h2>
-  </div>
-  <div class='previous-year-income data-card'>
-    <h2>{getPreviousYearData(data.data.user.events)}</h2>
-  </div>
-  {:catch e}
-  {/await}
+  <section class='data-cards-section'>
+    <div class='total-income data-card'>
+      <h3>Total Income</h3>
+      <h2>{`$${getIncomeTotal(data.data.user.events)}`}</h2>
+    </div>
+    <div class='income-to-date data-card'>
+      <h3>Year-to-Date Income</h3>
+      <h2>{`$${getDataToDate(data.data.user.events)}`}</h2>
+    </div>
+    <div class='previous-year-income data-card'>
+      <h3>Last Year's Income</h3>
+      <h2>{`$${getPreviousYearData(data.data.user.events)}`}</h2>
+    </div>
+  </section>
+    {:catch e}
+    {/await}
+    
+    {#await $mileageQuery}
+  <p>...loading</p>
+  {:then data}
+  {console.log(data)}
+  <section class='data-cards-section'>
+    <div class='total-mileage data-card'>
+      <h3>Total Mileage</h3>
+      <h2>{`${getIncomeTotal(data.data.user.events)}`}</h2>
+    </div>
+    <div class='mileage-to-date data-card'>
+      <h3>Year-to-Date Mileage</h3>
+      <h2>{`${getDataToDate(data.data.user.events)}`}</h2>
+    </div>
+    <div class='previous-year-mileage data-card'>
+      <h3>Last Year's Mileage</h3>
+      <h2>{`${getPreviousYearData(data.data.user.events)}`}</h2>
+    </div>
+  </section>
+    {:catch e}
+    {/await}
 
 </section>
 
@@ -97,5 +123,29 @@
 
   .dashboard-main {
     height: 100vh;
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+  .data-cards-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .data-card {
+    border: 2px solid yellow;
+    padding: 1rem;
+    width: 15%;
+  }
+
+  h3 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    border-bottom: 2px solid grey;
   }
 </style>
