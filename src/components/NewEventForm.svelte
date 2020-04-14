@@ -53,7 +53,6 @@
            mileage
            income
         }
-        errors
       }
 }
   `;
@@ -87,12 +86,12 @@
     <label for='event-title'>Event Title</label>
       <input bind:value={title} class='event-title' type='text'>
     <label for='mileage'>Mileage</label>
-      <input bind:value={mileage} type='number'>
+      <input bind:value={mileage} type='number' min='0' oninput="validity.valid||(value='');" step='any' >
     <label for='date'>Date & Time</label>
       <input bind:value={date} class='date' type='date'>
       <input bind:value={time} type='time' >
     <label for='payment'>Payment</label>
-      <input bind:value={payment} placeholder='$' class='payment' type='number' >
+      <input bind:value={payment} placeholder='$' min='0' step='any' class='payment' type='number' >
     <label for='notes'>Notes</label>
       <input class='notes-input' bind:value={notes} type='text'>
     <button>Create New Event</button>
