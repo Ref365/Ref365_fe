@@ -14,6 +14,7 @@
   let userId = 1;
   let errors = {
     formValid: true,
+    goodPost: true,
   }
 // methods
   const client = getClient();
@@ -84,7 +85,8 @@
         eventQuery.refetch();
       })
       .catch(e => {
-        console.error("error: ", e);
+        console.error('error:', e);
+        errors.goodPost = false;
       });
   }
 
@@ -104,6 +106,9 @@
     <h2>Add New Event</h2>
     {#if !errors.formValid}
       <p>Please make sure all fields are filled out.</p>
+    {/if}
+     {#if !errors.goodPost}
+      <p>We're sorry, there was an error creating your event. Please try again soon.</p>
     {/if}
     <label for='event-title'>Event Title</label>
       <input bind:value={title} class='event-title' type='text'>
