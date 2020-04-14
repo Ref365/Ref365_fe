@@ -1,9 +1,9 @@
 <script>
 	import NavBar from './components/NavBar.svelte'
-	import About from './components/About.svelte'
 	import NewEventForm from './components/NewEventForm.svelte'
 	import UpcomingEvents from './components/UpcomingEvents.svelte'
 	import Dashboard from './components/Dashboard.svelte'
+	import HomeScreen from './components/HomeScreen.svelte'
 	// export let name;
 	import { Router, Link, Route } from "svelte-routing";
 	export let url = '';
@@ -27,6 +27,7 @@
 <Router url={url}>
 	<main>
 		<NavBar />
+		<Route path='/' component={HomeScreen} />
 		<Route path='add-event' component={NewEventForm} />
 		<Route path='dashboard' component={Dashboard} />
 	</main>
@@ -37,19 +38,13 @@
   * {
 		font-family: 'Do Hyeon', sans-serif;
 		background-color: black;
-  }
+	}
+
 	main {
 		text-align: center;
 		padding: 1em;
 		max-width: 240px;
 		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
 	}
 
 	@media (min-width: 640px) {
