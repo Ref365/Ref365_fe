@@ -12,6 +12,13 @@
   let mileage;
   let payment;
   let userId = 1;
+  let errors = {
+    formValid: true,
+    goodPost: true,
+  }
+  let messages = {
+    successfulPost: false
+  }
 // methods
   const client = getClient();
    const GETEVENTS = gql`
@@ -20,6 +27,7 @@
           events {
             title
             dateTime
+            date
           }
         }
       }
@@ -53,7 +61,6 @@
            mileage
            income
         }
-        errors
       }
 }
   `;
@@ -73,31 +80,58 @@
     })
       .then(data => {
         console.log(data)
+        title = '';
+        notes = ''
+        date = null;
+        time = null;
+        mileage = null;
+        payment = null;
+        messages.successfulPost = true;
         eventQuery.refetch();
       })
       .catch(e => {
-        console.error("error: ", e);
+        console.error('error:', e);
+        errors.goodPost = false;
       });
   }
+
+  const validateForm = () => {
+    if (title && notes && date && time && mileage && payment) {
+      errors.formValid = true;
+      addEvent()
+    } else {
+      errors.formValid = false;
+    }
+  }
+
 </script>
 
 <section>
-  <form on:submit|preventDefault={addEvent}>
+  <form on:submit|preventDefault={validateForm}>
     <h2>Add New Event</h2>
+    {#if !errors.formValid}
+      <p>Please make sure all fields are filled out.</p>
+    {/if}
+     {#if !errors.goodPost}
+      <p>We're sorry, there was an error creating your event. Please try again soon.</p>
+    {/if}
     <label for='event-title'>Event Title</label>
       <input bind:value={title} class='event-title' type='text'>
     <label for='mileage'>Mileage</label>
-      <input bind:value={mileage} type='number'>
+      <input bind:value={mileage} type='number' min='0' oninput="validity.valid||(value='');" step='any' >
     <label for='date'>Date & Time</label>
       <input bind:value={date} class='date' type='date'>
       <input bind:value={time} type='time' >
     <label for='payment'>Payment</label>
-      <input bind:value={payment} placeholder='$' class='payment' type='number' >
+      <input bind:value={payment} placeholder='$' min='0' oninput="validity.valid||(value='');" step='any' class='payment' type='number' >
     <label for='notes'>Notes</label>
-      <input class='notes-input' bind:value={notes} type='text'>
+      <textarea class='notes-input' bind:value={notes} type='text' rows="5" cols="33"></textarea>
     <button>Create New Event</button>
   </form>
   <div>
+    {#if messages.successfulPost}
+      <p class='happy-message'>Event created!</p>
+    {/if}
     <UpcomingEvents eventQuery={eventQuery}/>
   </div>
 </section>
@@ -121,13 +155,24 @@
     flex-direction: column;
   }
 
-  input {
+  input,
+  textarea {
     border: .1rem solid black;
     width: 60%;
     height: 3rem;
   }
   div {
     width: 50%;
+  }
+
+  p {
+    color: red;
+    font-size: 2rem;
+  }
+
+  .happy-message {
+    color: yellow;
+    font-size: 2rem;
   }
 
   .notes-input {
