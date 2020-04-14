@@ -12,6 +12,9 @@
   let mileage;
   let payment;
   let userId = 1;
+  let errors = {
+    formValid: true,
+  }
 // methods
   const client = getClient();
    const GETEVENTS = gql`
@@ -78,11 +81,24 @@
         console.error("error: ", e);
       });
   }
+
+  const validateForm = () => {
+    if (title && notes && date && time && mileage && payment) {
+      addEvent()
+      errors.formValid = true;
+    } else {
+      errors.formValid = false;
+    }
+    
+  }
 </script>
 
 <section>
-  <form on:submit|preventDefault={addEvent}>
+  <form on:submit|preventDefault={validateForm}>
     <h2>Add New Event</h2>
+    {#if !errors.formValid}
+      <p>Please make sure all fields are filled out.</p>
+    {/if}
     <label for='event-title'>Event Title</label>
       <input bind:value={title} class='event-title' type='text'>
     <label for='mileage'>Mileage</label>
@@ -128,6 +144,11 @@
   }
   div {
     width: 50%;
+  }
+
+  p {
+    color: red;
+    font-size: 2rem;
   }
 
   .notes-input {
