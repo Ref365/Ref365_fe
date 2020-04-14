@@ -16,6 +16,9 @@
     formValid: true,
     goodPost: true,
   }
+  let messages = {
+    successfulPost: false
+  }
 // methods
   const client = getClient();
    const GETEVENTS = gql`
@@ -83,6 +86,7 @@
         time = null;
         mileage = null;
         payment = null;
+        messages.successfulPost = true;
         eventQuery.refetch();
       })
       .catch(e => {
@@ -125,6 +129,9 @@
     <button>Create New Event</button>
   </form>
   <div>
+    {#if messages.successfulPost}
+      <p class='happy-message'>Event created!</p>
+    {/if}
     <UpcomingEvents eventQuery={eventQuery}/>
   </div>
 </section>
@@ -160,6 +167,11 @@
 
   p {
     color: red;
+    font-size: 2rem;
+  }
+
+  .happy-message {
+    color: yellow;
     font-size: 2rem;
   }
 
