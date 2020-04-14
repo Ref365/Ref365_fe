@@ -22,10 +22,7 @@
     <p>.. loading</p>
   {:then data}
 
-  {
-    sortEvents(data.data.user.events)
-  }
-
+  <p class='hidden'>{sortEvents(data.data.user.events)}</p>
 
     {#each sortedEvents as event, i}
     <section class='event-card'>
@@ -60,6 +57,9 @@
     margin: 1rem;
     color: white;
     font-size: 1.2rem;
+  }
+  .hidden {
+    display: none;
   }
 
 </style>
