@@ -24,6 +24,7 @@
           events {
             title
             dateTime
+            date
           }
         }
       }

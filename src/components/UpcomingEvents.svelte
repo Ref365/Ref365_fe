@@ -20,6 +20,13 @@
    }
  }
 
+ const convertToReadable = (date) => {
+   let splitDate = date.split('')
+   let formattedDate = splitDate.slice(0,10).join('')
+
+   return formattedDate;
+ } 
+
 </script>
 
 <section class='card-container'>
@@ -33,7 +40,7 @@
     {#each firstFive as event, i}
     <section class='event-card'>
       <p class='event-title'>{event.title}</p>
-      <p>{event.dateTime}</p>
+      <p>{convertToReadable(event.dateTime)}</p>
     </section>
     {/each}
 
