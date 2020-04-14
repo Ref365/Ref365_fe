@@ -11,7 +11,7 @@
  let sortedEvents = [];
 
  const sortEvents = (events) => {
-   sortedEvents = events.sort((a,b) => new Date(a.dateTime) - new Date(b.dateTime))
+   sortedEvents = events.sort((a,b) => new Date(b.dateTime) - new Date(a.dateTime))
  }
 
 </script>
