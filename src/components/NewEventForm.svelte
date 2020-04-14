@@ -91,9 +91,9 @@
       <input bind:value={date} class='date' type='date'>
       <input bind:value={time} type='time' >
     <label for='payment'>Payment</label>
-      <input bind:value={payment} placeholder='$' min='0' step='any' class='payment' type='number' >
+      <input bind:value={payment} placeholder='$' min='0' oninput="validity.valid||(value='');" step='any' class='payment' type='number' >
     <label for='notes'>Notes</label>
-      <input class='notes-input' bind:value={notes} type='text'>
+      <textarea class='notes-input' bind:value={notes} type='text' rows="5" cols="33"></textarea>
     <button>Create New Event</button>
   </form>
   <div>
@@ -120,7 +120,8 @@
     flex-direction: column;
   }
 
-  input {
+  input,
+  textarea {
     border: .1rem solid black;
     width: 60%;
     height: 3rem;
