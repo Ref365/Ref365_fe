@@ -1,5 +1,6 @@
 <script>
   import ApolloClient from "apollo-boost";
+  import Calendar from './Calendar.svelte';
   import { gql } from "apollo-boost";
   import { setClient, getClient, mutate, query } from "svelte-apollo";
   let userId = 1;
@@ -29,7 +30,7 @@
    let formattedDate = splitDate.slice(0,10).join('')
 
    return formattedDate;
- } 
+ }
 
   const DELETEEVENT = gql`
     mutation(
@@ -56,6 +57,8 @@
       console.log('error:', e)
     })
   }
+
+  const today = new Date;
 </script>
 
 
@@ -75,7 +78,9 @@
     {/each}
   </section>
   {/await}
+  <Calendar {today} year={2020} />
 </section>
+
 
 
 <style>
