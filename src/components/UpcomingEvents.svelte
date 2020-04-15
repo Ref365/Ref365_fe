@@ -27,6 +27,33 @@
    return formattedDate;
  } 
 
+     const DELETEEVENT = gql`
+    mutation(
+      $eventId: ID!
+    ){
+      deleteEvent(input: {
+      eventId: $eventId
+    }) {
+    status
+  }}
+  `;
+
+  const deleteEvent = (eventId) => {
+    const eventDelete = mutate(client, {
+      mutation: DELETEEVENT,
+      variables: {
+        eventId
+      }
+    })
+    .then(res => {
+      console.log(res)
+      eventQuery.refetch();
+    })
+    .catch(e => {
+      console.log('error:', e)
+    })
+  }
+
 </script>
 
 <section class='card-container'>
@@ -41,6 +68,7 @@
     <section class='event-card'>
       <p class='event-title'>{event.title}</p>
       <p>{convertToReadable(event.dateTime)}</p>
+      <button on:click={deleteEvent(event.id)}>Delete Event</button>
     </section>
     {/each}
 
@@ -73,6 +101,10 @@
   }
   .hidden {
     display: none;
+  }
+
+  button {
+    cursor: pointer;
   }
 
 </style>

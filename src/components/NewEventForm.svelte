@@ -28,6 +28,7 @@
             title
             dateTime
             date
+            id
           }
         }
       }

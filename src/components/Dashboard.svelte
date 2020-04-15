@@ -28,6 +28,7 @@
       }
     `;
 
+
   const incomeQuery = query(client, {query: GETALLINCOME});
   const mileageQuery = query(client, {query: GETALLMILEAGE});
 
