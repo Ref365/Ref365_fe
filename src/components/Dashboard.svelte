@@ -2,8 +2,9 @@
   import ApolloClient from "apollo-boost";
   import { gql } from "apollo-boost";
   import { setClient, getClient, mutate, query } from "svelte-apollo";
-  // import Chart from 'chart.js';
-  import Chart from './Chart.svelte'
+  import TotalIncomeChart from './TotalIncomeChart.svelte';
+  import TotalMileageChart from './TotalMileageChart.svelte';
+  import MonthIncomeChart from './MonthIncomeChart.svelte'
 
   let userId = 1;
   const client = getClient();
@@ -33,8 +34,10 @@
   const incomeQuery = query(client, {query: GETALLINCOME});
   const mileageQuery = query(client, {query: GETALLMILEAGE});
 
+
+  let totalData = 0;
   const getTotalData = (events, type) => {
-    let totalData = events.reduce((acc, event) => {
+    totalData = events.reduce((acc, event) => {
       return acc + event[type];
     }, 0);
     return totalData;
@@ -73,7 +76,7 @@
 
 <section class='dashboard-main'>
   <h1>Dashboard</h1>
-  <!-- {#await $incomeQuery}
+  {#await $incomeQuery}
   <p>...loading</p>
   {:then data}
   <section class='data-cards-section'>
@@ -89,6 +92,14 @@
       <h3>Last Year's Income</h3>
       <h2>{`$${getPreviousYearData(data.data.user.events, 'income')}`}</h2>
     </div>
+  </section>
+   <section class='income-chart-section'>
+      <TotalIncomeChart totalIncome={getTotalData(data.data.user.events, 'income')}
+             yearToDateIncome={getDataToDate(data.data.user.events, 'income')}
+             lastYearIncome={getPreviousYearData(data.data.user.events, 'income')}
+      />
+      <!-- this component below needs to be finished but it represents a line graph of month to month income -->
+      <!-- <MonthIncomeChart allEvents={data.data.user.events}/> -->
   </section>
     {:catch e}
     {/await}
@@ -110,9 +121,15 @@
       <h2>{`${getPreviousYearData(data.data.user.events, 'mileage')} miles`}</h2>
     </div>
   </section>
+   <section class='mileage-chart-section'>
+      <TotalMileageChart totalMileage={getTotalData(data.data.user.events, 'mileage')}
+             yearToDateMileage={getDataToDate(data.data.user.events, 'mileage')}
+             lastYearMileage={getPreviousYearData(data.data.user.events, 'mileage')}
+      />
+  </section>
     {:catch e}
-    {/await} -->
-    <Chart />
+    {/await}
+
 </section>
 
 
@@ -122,8 +139,12 @@
     color: white;
   }
 
+  .income-chart-section {
+    /* height: 30%; */
+    /* border: 5px solid green; */
+  }
   .dashboard-main {
-    height: 100vh;
+    /* height: 100vh; */
   }
 
   h1 {
