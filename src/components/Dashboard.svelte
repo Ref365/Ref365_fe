@@ -3,7 +3,8 @@
   import { gql } from "apollo-boost";
   import { setClient, getClient, mutate, query } from "svelte-apollo";
   import TotalIncomeChart from './TotalIncomeChart.svelte';
-  import TotalMileageChart from './TotalMileageChart.svelte'
+  import TotalMileageChart from './TotalMileageChart.svelte';
+  import MonthIncomeChart from './MonthIncomeChart.svelte'
 
   let userId = 1;
   const client = getClient();
