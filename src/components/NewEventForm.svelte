@@ -140,7 +140,7 @@
 <style>
   section {
     display: flex;
-
+    height: 100vh;
   }
   h2 {
     font-size: 2rem;
@@ -160,6 +160,7 @@
     border: .1rem solid black;
     width: 60%;
     height: 3rem;
+    margin-top: 5px;
   }
   div {
     width: 50%;
@@ -189,6 +190,7 @@
   button {
     width: 60%;
     cursor: pointer;
+    border: none;
     border-radius: 5%;
     background-color: yellow;
     margin-top: 2rem;
