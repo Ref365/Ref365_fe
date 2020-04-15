@@ -93,12 +93,12 @@
   }
 
   .view-all-btn {
-    color: white;
+    color: orange;
     padding: 5px;
     font-size: 2rem;
     text-decoration: none;
-    border-left: 2px solid white;
-    border-right: 2px solid white;
+    /* border-left: 2px solid white;
+    border-right: 2px solid white; */
 
   }
   .event-card {
@@ -116,6 +116,8 @@
 
   button {
     cursor: pointer;
+    background-color: orange;
+    border: none;
   }
 
 </style>

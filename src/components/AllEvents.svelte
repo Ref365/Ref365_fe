@@ -60,10 +60,12 @@
 
 
 <section>
+  <h1>All Events</h1>
   {#await $eventQuery}
     <p>...loading</p>
   {:then data}
   <p class='hidden'>{sortEvents(data.data.user.events)}</p>
+  <section class='card-section'>
   {#each sortedEvents as event, i}
     <section class='event-card'>
       <p class='event-title'>{event.title}</p>
@@ -71,13 +73,14 @@
       <button on:click={deleteEvent(event.id)}>Delete Event</button>
     </section>
     {/each}
+  </section>
   {/await}
 </section>
 
 
-
 <style>
-  section {
+  .card-section {
+    margin-top: 0;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -86,6 +89,11 @@
    color: white;
    height: 100vh;
 
+  }
+
+  h1 {
+    color: white;
+    font-size: 3rem;
   }
   .event-card {
     display: flex;
