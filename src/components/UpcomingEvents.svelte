@@ -109,6 +109,7 @@
     margin: 1rem;
     color: white;
     font-size: 1.2rem;
+    padding-bottom: .5rem;
   }
   .hidden {
     display: none;
