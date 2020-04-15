@@ -27,8 +27,8 @@
   const convertToReadable = (date) => {
    let splitDate = date.split('')
    let formattedDate = splitDate.slice(0,10).join('')
-
-   return formattedDate;
+   let longDate = new Date(formattedDate)
+  return longDate.toString().split('').slice(0, 15).join('')
  } 
 
   const DELETEEVENT = gql`
@@ -113,5 +113,7 @@
 
   button {
     cursor: pointer;
+     background-color: orange;
+    border: none;
   }
 </style>
