@@ -7,7 +7,7 @@
     "yarn": "1.x"
   },
   "scripts": {
-    "build": "npm run build",
+    "build": "rollup -c",
     "dev": "rollup -c -w",
     "start": "sirv public --single",
     "start:dev": "sirv public --dev --single",
