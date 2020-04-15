@@ -4,6 +4,29 @@ import Chart from 'chart.js';
 // export let totalMileage;
 // export let yearToDateMileage;
 // export let lastYearMileage;
+export let allEvents;
+console.log(allEvents);
+// need to sort these by year to date and last year to compare this year's monthly income to last
+// could create arrays containing the montly income for previous year and current year to date
+  const getDataToDate = (events, type) => {
+    let date = new Date();
+    let currentYear = date.getFullYear();
+    let yearBegin = new Date(currentYear, 0, 1).getTime();
+    let eventsToDate = events.filter(event => {
+      let date = new Date(event.dateTime);
+      let milliseconds = date.getTime();
+      return (milliseconds > yearBegin) && (milliseconds < Date.now());
+    });
+    console.log('eventsToDate:', eventsToDate)
+    // let dataToDate = eventsToDate.reduce((acc, event) => {
+    //   return acc + event[type];
+    // }, 0);
+    // return dataToDate;
+  };
+
+  getDataToDate(allEvents, 'income')
+
+
 
 function createChart() {
   
@@ -16,10 +39,10 @@ function createChart() {
   var myChart = new Chart(ctx, {
       type: 'line',
       data: {
-          labels: ['All-Time', 'Year-To-Date', 'Last Year'],
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'August', 'Sep', 'Oct', 'Nov', 'Dec'],
           datasets: [{
-              label: 'Mileage Data:',
-              data: [totalMileage, yearToDateMileage, lastYearMileage],
+              label: 'Income Trends:',
+              data: [14,54,34],
               backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',
                   'rgba(54, 162, 235, 0.2)',

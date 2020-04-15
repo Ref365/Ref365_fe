@@ -98,6 +98,7 @@
              yearToDateIncome={getDataToDate(data.data.user.events, 'income')}
              lastYearIncome={getPreviousYearData(data.data.user.events, 'income')}
       />
+      <!-- <MonthIncomeChart allEvents={data.data.user.events}/> -->
   </section>
     {:catch e}
     {/await}
