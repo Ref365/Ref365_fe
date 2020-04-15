@@ -4,6 +4,7 @@
 	import UpcomingEvents from './components/UpcomingEvents.svelte'
 	import Dashboard from './components/Dashboard.svelte'
 	import HomeScreen from './components/HomeScreen.svelte'
+	import AllEvents from './components/AllEvents.svelte'
 	// export let name;
 	import { Router, Link, Route } from "svelte-routing";
 	export let url = '';
@@ -30,6 +31,7 @@
 		<Route path='/' component={HomeScreen} />
 		<Route path='add-event' component={NewEventForm} />
 		<Route path='dashboard' component={Dashboard} />
+		<Route path='all-events' component={AllEvents} />
 	</main>
 </Router>
 
