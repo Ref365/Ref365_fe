@@ -1,18 +1,25 @@
-<canvas id="myChart" width="400" height="400"></canvas>
 <script>
 import {onMount} from 'svelte';
 import Chart from 'chart.js';
-let num = 15;
+export let totalMileage;
+export let yearToDateMileage;
+export let lastYearMileage;
 
 function createChart() {
+  
   var ctx = document.getElementById('myChart');
+  Chart.defaults.global.defaultFontSize = 22;
+  Chart.defaults.global.defaultFontFamily = 'Arial';
+  Chart.defaults.global.defaultFontColor = 'white';
+
+
   var myChart = new Chart(ctx, {
       type: 'bar',
       data: {
           labels: ['All-Time', 'Year-To-Date', 'Last Year'],
           datasets: [{
-              label: 'Income',
-              data: [12, 19, num, 5, 2, 3],
+              label: 'Mileage Data:',
+              data: [totalMileage, yearToDateMileage, lastYearMileage],
               backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',
                   'rgba(54, 162, 235, 0.2)',
@@ -29,7 +36,7 @@ function createChart() {
                   'rgba(153, 102, 255, 1)',
                   'rgba(255, 159, 64, 1)'
               ],
-              borderWidth: 1
+              borderWidth: 2
           }]
       },
       options: {
@@ -46,5 +53,21 @@ function createChart() {
 
 onMount(createChart)
 </script>
+
+<section>
+  <canvas id="myChart" ></canvas>
+</section>
+
+<style>
+
+  canvas {
+
+  }
+
+  section {
+    border: 5px solid grey;
+    margin-bottom: 2rem;
+  }
+</style>
 
 
