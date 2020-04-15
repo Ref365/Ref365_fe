@@ -98,6 +98,7 @@
              yearToDateIncome={getDataToDate(data.data.user.events, 'income')}
              lastYearIncome={getPreviousYearData(data.data.user.events, 'income')}
       />
+      <!-- this component below needs to be finished but it represents a line graph of month to month income -->
       <!-- <MonthIncomeChart allEvents={data.data.user.events}/> -->
   </section>
     {:catch e}
