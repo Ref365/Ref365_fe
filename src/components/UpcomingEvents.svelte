@@ -54,6 +54,11 @@
     })
   }
 
+  const displayEventDetails = event => {
+    let selectedCard = document.querySelector(`#event-${event.id}`)
+    selectedCard.classList.toggle('hidden');
+  }
+
 </script>
 
 <section class='card-container'>
@@ -67,8 +72,14 @@
 
     {#each firstFive as event, i}
     <section class='event-card'>
+    <button class='show-details-btn' on:click={displayEventDetails(event)}>Show Event Details</button>
       <p class='event-title'>{event.title}</p>
       <p>{convertToReadable(event.dateTime)}</p>
+      <div class='expanded-details hidden' id={`event-${event.id}`}>
+        <p>Notes: {event.notes}</p>
+        <p>${event.income}</p>
+        <p>{event.mileage} miles</p>
+      </div>
       <button on:click={deleteEvent(event.id)}>Delete Event</button>
     </section>
     {/each}
@@ -113,6 +124,16 @@
   }
   .hidden {
     display: none;
+  }
+
+  .show-details-btn {
+    background-color: grey;
+    color: white;
+    font-size: 1rem;
+    margin-left: 60%;
+    margin-top: 2%;
+    cursor: pointer;
+    /* width: 20%; */
   }
 
   button {

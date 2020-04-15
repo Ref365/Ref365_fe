@@ -29,6 +29,9 @@
             dateTime
             date
             id
+            notes
+            income
+            mileage
           }
         }
       }
