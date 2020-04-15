@@ -2,7 +2,8 @@
   import ApolloClient from "apollo-boost";
   import { gql } from "apollo-boost";
   import { setClient, getClient, mutate, query } from "svelte-apollo";
-
+  // import Chart from 'chart.js';
+  import Chart from './Chart.svelte'
 
   let userId = 1;
   const client = getClient();
@@ -72,7 +73,7 @@
 
 <section class='dashboard-main'>
   <h1>Dashboard</h1>
-  {#await $incomeQuery}
+  <!-- {#await $incomeQuery}
   <p>...loading</p>
   {:then data}
   <section class='data-cards-section'>
@@ -92,7 +93,7 @@
     {:catch e}
     {/await}
     
-    {#await $mileageQuery}
+  {#await $mileageQuery}
   <p>...loading</p>
   {:then data}
   <section class='data-cards-section'>
@@ -110,8 +111,8 @@
     </div>
   </section>
     {:catch e}
-    {/await}
-
+    {/await} -->
+    <Chart />
 </section>
 
 
