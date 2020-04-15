@@ -9,7 +9,7 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "start": "node index.js",
+    "start": "npm run start",
     "start:dev": "sirv public --dev --single",
     "cypress": "cypress open"
   },
