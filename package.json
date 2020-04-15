@@ -1,8 +1,13 @@
 {
   "name": "svelte-app",
   "version": "1.0.0",
+  "engines": {
+    "node": "12.16.x"
+    "npm": "6.x"
+    "yarn": "1.x"
+    }
   "scripts": {
-    "build": "rollup -c",
+    "build": "npm run build",
     "dev": "rollup -c -w",
     "start": "sirv public --single",
     "start:dev": "sirv public --dev --single",
