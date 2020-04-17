@@ -6,6 +6,12 @@ Our app is a tool for referee's to track their game schedule, mileage traveled, 
 
 ### Screenshots:
 ![landing page](https://imgur.com/r7NggxJ.png)
+![add event page](https://imgur.com/U0RAFhk.png)
+![all events page](https://imgur.com/O2iPKnk.png)
+![dashboard 1](https://imgur.com/1Fr0Us4.png)
+![chart 1](https://imgur.com/klPawYN.png)
+![dashboard 2](https://imgur.com/gV9FTHd.png)
+
 
 
 ### Ref365 Front End Development Environment [Set-Up](https://gist.github.com/nwgambee/2216c410ba3d79d21b8d3ae8fcbf83b0)
